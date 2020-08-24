@@ -1,10 +1,9 @@
 FROM php:7.2.19-fpm-alpine3.10
 WORKDIR /var/www
 
-RUN apk add --no-cache shadow openssl bash mysql-client libpng-dev
+RUN apk add --no-cache shadow openssl bash mysql-client libpng-dev git
 RUN docker-php-ext-install pdo pdo_mysql
 RUN docker-php-ext-install gd
-RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install mysqli
 
 ENV DOCKERIZE_VERSION v0.6.1
