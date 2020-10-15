@@ -10,7 +10,4 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-#EXPOSE 80
-#ENTRYPOINT [ "nginx" ]
-
-#CMD [ "-g", "daemon off;" ]
+#COPY ./nginx.conf /etc/nginx/conf.d -> esta config esta sendo feita pelo template do dockerize

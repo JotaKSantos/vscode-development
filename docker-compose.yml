@@ -25,7 +25,7 @@ services:
         volumes: 
             - .docker/mysql/dbdata:/var/lib/mysql
         environment: 
-            - MYSQL_DATABASE=webcvtenants
+            - MYSQL_DATABASE=baseapp
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_USER=root
 
