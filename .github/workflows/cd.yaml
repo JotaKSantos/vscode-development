@@ -43,6 +43,6 @@ jobs:
           with:
             push: true
             context: .
-            file: ./docker/php/Dockerfile
+            file: .docker/php/Dockerfile
             platforms: linux/amd64,linux/arm64,linux/386
             tags: jksantos/php7.2.19:${{ steps.tagging.outputs.new_version }}
