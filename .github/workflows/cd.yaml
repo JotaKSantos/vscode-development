@@ -18,6 +18,9 @@ jobs:
             images: jksantos/php7.2.19
             tag-sha: true
 
+        - name: Get DotEnv
+          id: dotenv
+          uses: ./.github/actions/dotenv-action
 
         - name: QEMU
           uses: docker/setup-qemu-action@v1
@@ -44,7 +47,7 @@ jobs:
             push: true
             context: .docker/PHP/
             file: .docker/PHP/Dockerfile
-            tags: jksantos/php7.2.19:latest,jksantos/php7.2.19:${{ steps.tagging.outputs.new_version }}
+            tags: jksantos/php${{ steps.dotenv.outputs.php_version }}:latest,jksantos/php${{ steps.dotenv.outputs.php_version }}:${{ steps.tagging.outputs.new_version }}
 
         - name: Build and push MySql
           id: docker_build_mysql

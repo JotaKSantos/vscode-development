@@ -2,8 +2,7 @@ version: '3'
 
 services: 
     app:
-        image: jksantos/php:7.2.19-fpm-alpine3.10
-        build: .docker/PHP
+        image: "jksantos/php${PHP_VERSION}:latest"
         entrypoint: dockerize -wait tcp://mysql:3306 -timeout 40s php-fpm
         container_name: app
         networks: 
@@ -14,8 +13,7 @@ services:
             - mysql
         
     mysql:
-        build: .docker/mysql
-        image: jksantos/mysql:5.7
+        image: "jksantos/mysql${MYSQL_VERSION}:latest"
         container_name: mysql
         networks: 
             - api-network
@@ -30,8 +28,7 @@ services:
             - MYSQL_USER=root
 
     nginx:
-        build: .docker/nginx
-        image: jksantos/nginx:1.17.9-alpine
+        image: "jksantos/nginx${NGINX_VERSION}:latest"
         container_name: nginx
         entrypoint: dockerize -template ./.docker/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf nginx -g "daemon off;"
         restart: always
