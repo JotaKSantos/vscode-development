@@ -1,4 +1,4 @@
-FROM php:7.2.19-fpm-alpine3.10
+FROM php:$PHP_VERSION-fpm-alpine
 WORKDIR /var/www
 
 RUN apk add --no-cache shadow openssl bash mysql-client libpng-dev libpng freetype libjpeg-turbo freetype-dev libjpeg-turbo-dev
