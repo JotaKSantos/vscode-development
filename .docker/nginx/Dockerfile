@@ -1,4 +1,5 @@
-FROM nginx:1.17.9-alpine
+ARG NGINX_VERSION
+FROM nginx:$NGINX_VERSION-alpine
 WORKDIR /var/www
 
 RUN apk add --no-cache openssl
