@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:8.1.11-fpm
 
 # Arguments defined in docker-compose.yml
 ARG user
@@ -23,6 +23,10 @@ RUN bash nodesource_setup.sh
 
 RUN apt-get update && apt-get install -y \
     nodejs
+
+RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt update && apt install yarn
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
