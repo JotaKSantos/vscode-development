@@ -41,6 +41,9 @@ RUN cd /usr/local/etc/php/conf.d/ && \
   echo 'upload_max_filesize = 100M' >> /usr/local/etc/php/conf.d/docker-php-limits.ini && \
   echo 'post_max_size = 120M' >> /usr/local/etc/php/conf.d/docker-php-limits.ini && \
   echo 'memory_limit = 1024M' >> /usr/local/etc/php/conf.d/docker-php-limits.ini
+
+#ativando o xdebug
+RUN pecl install xdebug && docker-php-ext-enable xdebug
   
 ENV DOCKERIZE_VERSION v0.6.1
 RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
@@ -59,3 +62,4 @@ RUN mkdir -p /home/$user/.composer && \
 WORKDIR /var/www
 
 USER $user
+

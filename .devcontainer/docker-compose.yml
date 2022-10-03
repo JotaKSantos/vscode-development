@@ -5,7 +5,7 @@ services:
       args:
         user: vscode
         uid: 1000
-      context: ../docker-compose/app/
+      context: ../.docker/app/
       dockerfile: Dockerfile
     image: php
     container_name: app
@@ -32,7 +32,7 @@ services:
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
-      - ../docker-compose/mysql:/var/lib/mysql
+      - ../.docker/mysql:/var/lib/mysql
     networks:
       - app-network
 
@@ -44,8 +44,8 @@ services:
       - "8080:80"
     volumes:
       - ../:/var/www
-      - ../docker-compose/nginx/conf.d:/etc/nginx/conf.d
-      - ../docker-compose/nginx/logs:/var/log/nginx
+      - ../.docker/nginx/conf.d:/etc/nginx/conf.d
+      - ../.docker/nginx/logs:/var/log/nginx
     networks:
       - app-network
 
